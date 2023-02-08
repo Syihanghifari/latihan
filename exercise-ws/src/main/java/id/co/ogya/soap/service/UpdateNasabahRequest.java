@@ -2,43 +2,43 @@ package id.co.ogya.soap.service;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+@XmlRootElement(namespace = "updateReques")
 public class UpdateNasabahRequest {
-	private Long noNasabah;
-	private Long nik;
-	private String namaLengkap;
-	private String cabang;
+	private Long updateNoNasabah;
+	private Long updateNik;
+	private String updateNamaLengkap;
+	private String updateCabang;
 	public UpdateNasabahRequest() {
 	}
-	public UpdateNasabahRequest(Long noNasabah, Long nik, String namaLengkap, String cabang) {
+	public UpdateNasabahRequest(Long updateNoNasabah, Long updateNik, String updateNamaLengkap, String updateCabang) {
 		super();
-		this.noNasabah = noNasabah;
-		this.nik = nik;
-		this.namaLengkap = namaLengkap;
-		this.cabang = cabang;
+		this.updateNoNasabah = updateNoNasabah;
+		this.updateNik = updateNik;
+		this.updateNamaLengkap = updateNamaLengkap;
+		this.updateCabang = updateCabang;
 	}
 	public Long getNoNasabah() {
-		return noNasabah;
+		return updateNoNasabah;
 	}
 	public void setNoNasabah(Long noNasabah) {
-		this.noNasabah = noNasabah;
+		this.updateNoNasabah = noNasabah;
 	}
 	public Long getNik() {
-		return nik;
+		return updateNik;
 	}
-	public void setNik(Long nik) {
-		this.nik = nik;
+	public void setNik(Long updateNik) {
+		this.updateNik = updateNik;
 	}
 	public String getNamaLengkap() {
-		return namaLengkap;
+		return updateNamaLengkap;
 	}
-	public void setNamaLengkap(String namaLengkap) {
-		this.namaLengkap = namaLengkap;
+	public void setNamaLengkap(String updateNamaLengkap) {
+		this.updateNamaLengkap = updateNamaLengkap;
 	}
 	public String getCabang() {
-		return cabang;
+		return updateCabang;
 	}
-	public void setCabang(String cabang) {
-		this.cabang = cabang;
+	public void setCabang(String updateCabang) {
+		this.updateCabang = updateCabang;
 	}
 }

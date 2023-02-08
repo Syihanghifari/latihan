@@ -88,45 +88,6 @@ public class Exercise {
 			}
 		}
 	}
-//	@WebMethod
-//	public Response update(@WebParam(name = "no") Long no, @WebParam(name = "nik") Long nik,
-//								 @WebParam(name = "nama") String nama, @WebParam(name = "cabang") String cabang)
-//			throws InvalidInputException, ParseException {
-//		Date tanggal = new SimpleDateFormat("dd/MM/yyyy").parse("27/04/2000");
-//		InsertNasabahRequest nasabah = new InsertNasabahRequest(12L, 12121221L, "syihan", "jakarta", "27/04/2000", "cabang");
-//		if (nasabah.getNamaLengkap().equals(nama)) {
-//			if (no == null) {
-//				throw new InvalidInputException("field nomor harus diisi", " ERR-002");
-//			} else if (nik == null) {
-//				throw new InvalidInputException("field nik harus diisi", " ERR-002");
-//			} else if (nama == null || nama == "") {
-//				throw new InvalidInputException("field nama harus diisi", " ERR-002");
-//			} else if (cabang == null || cabang == "") {
-//				throw new InvalidInputException("field cabang harus diisi", " ERR-002");
-//			} else {
-//				if (no instanceof Long && nik instanceof Long) {
-//					if (String.valueOf(no).length() < 10) {
-//						throw new InvalidInputException("no nasabah harus 10 digit", " ERR-002");
-//					} else if (String.valueOf(nik).length() < 16) {
-//						throw new InvalidInputException("nik harus 16 digit", " ERR-002");
-//					} else {
-//						nasabah.setNoNasabah(no);
-//						nasabah.setNik(nik);
-//						nasabah.setNamaLengkap(nama);
-//						nasabah.setCabang(cabang);
-//						Response message = new Response("ERR-000", "Data berhasil diupdate");
-//						return message;
-//					}
-//				} else {
-//					throw new InvalidInputException("nomor and nik harus number", " ERR-001");
-//				}
-//			}
-//
-//		} else {
-//			throw new InvalidInputException("data tidak ditemukan", " ERR-003");
-//		}
-//	}
-
 	@WebMethod
 	public InquiryNasabahResponse inquiryNasabah(@WebParam(name = "no") Long no) throws InvalidInputException, ParseException {
 		Date tanggal = new SimpleDateFormat("dd/MM/yyyy").parse("27/04/2000");

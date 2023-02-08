@@ -2,31 +2,31 @@ package id.co.ogya.soap.service;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+@XmlRootElement(namespace = "inquiryResponse")
 public class InquiryNasabahResponse {
-	private String code;
-	private String message;
+	private String iCode;
+	private String iMessage;
 	private InsertNasabahRequest dataNasabah;
 	public InquiryNasabahResponse() {
 	}
-	public InquiryNasabahResponse(String code, String message, InsertNasabahRequest dataNasabah) {
+	public InquiryNasabahResponse(String iCode, String iMessage, InsertNasabahRequest dataNasabah) {
 		super();
-		this.code = code;
-		this.message = message;
+		this.iCode = iCode;
+		this.iMessage = iMessage;
 		this.dataNasabah = dataNasabah;
 	}
 
 	public String getCode() {
-		return code;
+		return iCode;
 	}
-	public void setCode(String code) {
-		this.code = code;
+	public void setCode(String iCode) {
+		this.iCode = iCode;
 	}
 	public String getMessage() {
-		return message;
+		return iMessage;
 	}
-	public void setMessage(String message) {
-		this.message = message;
+	public void setMessage(String iMessage) {
+		this.iMessage = iMessage;
 	}
 	public InsertNasabahRequest getDataNasabah() {
 		return dataNasabah;
