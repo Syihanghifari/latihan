@@ -2,7 +2,7 @@ package id.co.ogya.soap.service;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(namespace = "response")
+@XmlRootElement
 public class Response {
 	private String code;
 	private String message;
