@@ -2,7 +2,7 @@ package id.co.ogya.soap.service;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(namespace = "updateReques")
+@XmlRootElement(namespace = "http://service.soap.ogya.co.id/")
 public class UpdateNasabahRequest {
 	private Long updateNoNasabah;
 	private Long updateNik;

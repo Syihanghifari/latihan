@@ -2,7 +2,7 @@ package id.co.ogya.soap.service;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(namespace = "inquiryResponse")
+@XmlRootElement(namespace = "http://service.soap.ogya.co.id/")
 public class InquiryNasabahResponse {
 	private String iCode;
 	private String iMessage;

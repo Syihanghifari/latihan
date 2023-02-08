@@ -59,7 +59,7 @@ public class Exercise {
 		}
 	}
 	@WebMethod
-	public Response updateNasabahRequest(UpdateNasabahRequest updateNasabahRequest) throws InvalidInputException {
+	public Response updateNasabah(UpdateNasabahRequest updateNasabahRequest) throws InvalidInputException {
 		InsertNasabahRequest nasabah = new InsertNasabahRequest(12L, 12121221L, "syihan", "jakarta", "27/04/2000", "cabang");
 		if (updateNasabahRequest.getNoNasabah() == null) {
 			throw new InvalidInputException("field nomor harus diisi", " ERR-002");
@@ -80,8 +80,8 @@ public class Exercise {
 						nasabah.setNik(updateNasabahRequest.getNik());
 						nasabah.setNoNasabah(updateNasabahRequest.getNoNasabah());
 						nasabah.setCabang(updateNasabahRequest.getCabang());
-						Response message = new Response("ERR-000", "Data berhasil disimpan");
-						return message;
+						Response Imessage = new Response("ERR-000", "Data berhasil disimpan");
+						return Imessage;
 				}
 			} else {
 				throw new InvalidInputException("nomor and nik harus number", " ERR-001");
@@ -89,15 +89,15 @@ public class Exercise {
 		}
 	}
 	@WebMethod
-	public InquiryNasabahResponse inquiryNasabah(@WebParam(name = "no") Long no) throws InvalidInputException, ParseException {
+	public InquiryNasabahResponse nasabahInquiry(@WebParam(name = "no") Long no) throws InvalidInputException, ParseException {
 		Date tanggal = new SimpleDateFormat("dd/MM/yyyy").parse("27/04/2000");
 		InsertNasabahRequest nasabah = new InsertNasabahRequest(12L, 12121221L, "syihan", "jakarta", "27/04/2000", "cabang");
 		if (nasabah.getNoNasabah().equals(no)) {
 			if (no % 2 != 0) {
 				throw new InvalidInputException("data tidak ditemukan", " ERR-003");
 			} else {
-				InquiryNasabahResponse message = new InquiryNasabahResponse("ERR-000", "Data berhasil ditambahkan",nasabah);
-				return message;
+				InquiryNasabahResponse Jmessage = new InquiryNasabahResponse("ERR-000", "Data berhasil ditambahkan",nasabah);
+				return Jmessage;
 			}
 		} else if (no == null) {
 			throw new InvalidInputException("data harus diisi", " ERR-002");

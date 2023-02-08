@@ -4,7 +4,7 @@ import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(namespace = "insertRequest")
+@XmlRootElement
 public class InsertNasabahRequest {
 	private Long noNasabah;
 	private Long nik;
