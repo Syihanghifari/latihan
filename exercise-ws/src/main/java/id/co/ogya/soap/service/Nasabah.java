@@ -10,13 +10,13 @@ public class Nasabah {
 	private Long nik;
 	private String namaLengkap;
 	private String tempatLahir;
-	private Date tanggalLahir;
+	private String tanggalLahir;
 	private String cabang;
-	
+
 	public Nasabah() {
-		
+
 	}
-	public Nasabah(Long noNasabah, Long nik, String namaLengkap,String tempatLahir,Date tanggalLahir, String cabang) {
+	public Nasabah(Long noNasabah, Long nik, String namaLengkap,String tempatLahir,String tanggalLahir, String cabang) {
 		super();
 		this.noNasabah = noNasabah;
 		this.nik = nik;
@@ -49,10 +49,10 @@ public class Nasabah {
 	public void setTempatLahir(String tempatLahir) {
 		this.tempatLahir = tempatLahir;
 	}
-	public Date getTanggalLahir() {
+	public String getTanggalLahir() {
 		return tanggalLahir;
 	}
-	public void setTanggalLahir(Date tanggalLahir) {
+	public void setTanggalLahir(String tanggalLahir) {
 		this.tanggalLahir = tanggalLahir;
 	}
 	public String getCabang() {
@@ -61,7 +61,7 @@ public class Nasabah {
 	public void setCabang(String cabang) {
 		this.cabang = cabang;
 	}
-	
-	
-	
+
+
+
 }
