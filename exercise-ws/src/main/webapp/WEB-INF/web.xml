@@ -4,12 +4,5 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-	<servlet>
-		<servlet-name>home</servlet-name>
-		<servlet-class>id.co.ogya.soap.service.Exercise</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>serviceExercise</servlet-name>
-		<url-pattern>/serviceExercise</url-pattern>
-	</servlet-mapping>
+
     </web-app>

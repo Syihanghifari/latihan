@@ -22,9 +22,10 @@ public class InsertQueueListener1 implements MessageListener{
 			if (message instanceof TextMessage){
 				messageInString = ((TextMessage) message).getText();
 			} 
-			String[] datas =  messageInString.split(" ");
+			String[] datas = messageInString.split(",", 8);
 			for (String data : datas) {
-				System.out.println(data);
+				String[] names = data.split(":", 2);
+					System.out.println(names[0] + ":" + " <" + names[1] + ">");
 			}
 			try{
 				Thread.sleep(5000l);

@@ -41,4 +41,10 @@ public class UpdateNasabahRequest {
 	public void setCabang(String updateCabang) {
 		this.updateCabang = updateCabang;
 	}
+	@Override
+	public String toString() {
+		return  "no:"+updateNoNasabah + ",nik:" + updateNik
+				+ ",nama lengkap:" + updateNamaLengkap + ",cabang:" + updateCabang;
+	}
+	
 }

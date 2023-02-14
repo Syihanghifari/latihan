@@ -61,7 +61,12 @@ public class InsertNasabahRequest {
 	public void setCabang(String cabang) {
 		this.cabang = cabang;
 	}
-
+	@Override
+	public String toString() {
+		return "no:"+noNasabah + ",nik:" + nik + ",nama lengkap:" + namaLengkap
+				+ ",tempat lahir:" + tempatLahir + ",tanggal lahir:" + tanggalLahir + ",cabang:" + cabang;
+	}
+	
 
 
 }

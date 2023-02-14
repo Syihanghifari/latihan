@@ -7,32 +7,31 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
-
 @MessageDriven(activationConfig = {
-		@ActivationConfigProperty(propertyName = "destinationType", propertyValue="javax.jms.Queue"),
-		@ActivationConfigProperty(propertyName = "connectionFactoryJndiName", propertyValue="jms.TrainingCF"),
-		@ActivationConfigProperty(propertyName = "destinationJndiName", propertyValue="jms.UpdateNasabah")
-}, mappedName="jms.UpdateNasabah")
-public class UpdateQueueListener1 implements MessageListener{
-	
-	public void onMessage(Message message){
-		
-		try{
+		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
+		@ActivationConfigProperty(propertyName = "connectionFactoryJndiName", propertyValue = "jms.TrainingCF"),
+		@ActivationConfigProperty(propertyName = "destinationJndiName", propertyValue = "jms.UpdateNasabah") }, mappedName = "jms.UpdateNasabah")
+public class UpdateQueueListener1 implements MessageListener {
+
+	public void onMessage(Message message) {
+
+		try {
 			String messageInString = "";
-			if (message instanceof TextMessage){
+			if (message instanceof TextMessage) {
 				messageInString = ((TextMessage) message).getText();
-			} 
-			String[] datas =  messageInString.split(" ");
-			for (String data : datas) {
-				System.out.println(data);
 			}
-			try{
+			String[] datas = messageInString.split(",", 5);
+			for (String data : datas) {
+				String[] names = data.split(":", 2);
+				System.out.println(names[0] + ":" + " <" + names[1] + ">");
+			}
+			try {
 				Thread.sleep(5000l);
 				System.out.println("Process finished instance 1");
-			} catch(InterruptedException e) {
+			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-		}catch(JMSException e){
+		} catch (JMSException e) {
 			System.err.println("Error " + e.getMessage());
 		}
 	}
