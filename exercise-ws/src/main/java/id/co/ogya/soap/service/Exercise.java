@@ -162,7 +162,7 @@ public class Exercise {
 						connection.start();
 
 						TextMessage textMessage = session.createTextMessage();
-						String data = nasabah.toString();
+						String data = updateNasabahRequest.toString();
 						textMessage.setText(data);
 
 						sender.send(textMessage);
