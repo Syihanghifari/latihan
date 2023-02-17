@@ -24,7 +24,7 @@ import id.co.ogya.nasabah.response.InquiryNasabahResponse;
 import id.co.ogya.nasabah.response.Response;
 import id.co.ogya.nasabah.util.ServiceFactory;
 
-@WebService
+@WebService(targetNamespace = "http://service.soap.ogya.co.id/")
 public class ExerciseService {
 
 	@WebMethod
