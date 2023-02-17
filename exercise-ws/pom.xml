@@ -54,7 +54,11 @@
 				<version>3.2.2</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<packagingExcludes>
+					   WEB-INF/lib/wlfullclient-*.jar,
+					</packagingExcludes>
 				</configuration>
-			</plugin>		</plugins>
+			</plugin>
+		</plugins>
 	</build>
 </project>
