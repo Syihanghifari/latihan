@@ -14,6 +14,12 @@
 		<junit.version>4.11</junit.version>
 	</properties>
 	<dependencies>
+				<dependency>
+			<groupId>com.oracle.weblogic</groupId>
+			<artifactId>wlfullclient</artifactId>
+			<version>10.3</version>
+			<scope>compile</scope>
+		</dependency>
 		<dependency>
 			<groupId>com.sun.xml.ws</groupId>
 			<artifactId>jaxws-ri</artifactId>
