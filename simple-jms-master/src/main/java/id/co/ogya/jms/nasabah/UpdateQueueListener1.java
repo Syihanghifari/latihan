@@ -12,7 +12,6 @@ import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
 import id.co.ogya.jms.nasabah.util.DataSourceServiceFactory;
-import id.co.ogya.jms.nasabah.util.DbUtil;
 
 @MessageDriven(activationConfig = {
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
@@ -22,24 +21,26 @@ public class UpdateQueueListener1 implements MessageListener {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	Connection connection = null;
+
 	public void onMessage(Message message) {
 		DataSourceServiceFactory dataSourceServiceFactory = new DataSourceServiceFactory();
 		try {
-				connection = dataSourceServiceFactory.getConnection();
-				System.out.println("connection succes!!");
-			ps = connection.prepareStatement("UPDATE NASABAH SET NIK=?, NAMA_LENGKAP=?, CABANG=? WHERE NO_NASABAH=?");
+
 			String messageInString = "";
 			if (message instanceof TextMessage) {
 				messageInString = ((TextMessage) message).getText();
 			}
+			connection = dataSourceServiceFactory.getConnection();
+			System.out.println("connection succes!!");
+			ps = connection.prepareStatement("UPDATE NASABAH SET NIK=?, NAMA_LENGKAP=?, CABANG=? WHERE NO_NASABAH=?");
 			String[] datas = messageInString.split(",", 5);
 			int i = 1;
 			for (String data : datas) {
 				String[] names = data.split(":", 2);
 				System.out.println(names[0] + ":" + " <" + names[1] + ">");
-				if(names[0].toLowerCase().equals("no")) {
+				if (names[0].toLowerCase().equals("no")) {
 					ps.setString(4, names[1]);
-				}else {
+				} else {
 					ps.setString(i, names[1]);
 					i++;
 				}

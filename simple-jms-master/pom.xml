@@ -8,7 +8,7 @@
 		<version>2.2.0.RELEASE</version>
 	</parent>
 	<groupId>id.co.ogya</groupId>
-	<artifactId>simple-jms</artifactId>
+	<artifactId>nasabah-jms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
 		<java.version>1.8</java.version>
