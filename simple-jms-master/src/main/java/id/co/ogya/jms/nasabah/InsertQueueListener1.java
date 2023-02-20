@@ -13,6 +13,9 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
+
+import id.co.ogya.jms.nasabah.util.*;
+
 import id.co.ogya.jms.nasabah.util.DbUtil;
 
 
@@ -26,12 +29,10 @@ public class InsertQueueListener1 implements MessageListener{
 	ResultSet rs = null;
 	Connection connection = null;
 	public void onMessage(Message message){
-		
+		DataSourceServiceFactory dataSourceServiceFactory = new DataSourceServiceFactory();
 		try{
-			if(connection == null||connection.isClosed()) {
-				connection = DbUtil.getConnection();
-				System.out.println("connection succes!!");
-			}
+				connection = dataSourceServiceFactory.getConnection();
+				System.out.println("Insert connection succes!!");
 			ps = connection.prepareStatement("INSERT INTO NASABAH VALUES(?,?,?,?,?,?)");
 			String messageInString = "";
 			if (message instanceof TextMessage){
@@ -46,9 +47,9 @@ public class InsertQueueListener1 implements MessageListener{
 					i++;
 			}
 			rs = ps.executeQuery();
-			DbUtil.dbCleanUp(connection, ps, rs);
+			connection.close();
 			System.out.println("connection terminated!!");
-		}catch(Exception e){
+		}catch(Throwable e){
 			System.err.println("Error " + e.getMessage());
 		}
 	}

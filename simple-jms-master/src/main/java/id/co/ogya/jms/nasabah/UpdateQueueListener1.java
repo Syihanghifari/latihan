@@ -11,6 +11,7 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
+import id.co.ogya.jms.nasabah.util.DataSourceServiceFactory;
 import id.co.ogya.jms.nasabah.util.DbUtil;
 
 @MessageDriven(activationConfig = {
@@ -22,12 +23,10 @@ public class UpdateQueueListener1 implements MessageListener {
 	ResultSet rs = null;
 	Connection connection = null;
 	public void onMessage(Message message) {
-
+		DataSourceServiceFactory dataSourceServiceFactory = new DataSourceServiceFactory();
 		try {
-			if(connection == null||connection.isClosed()) {
-				connection = DbUtil.getConnection();
+				connection = dataSourceServiceFactory.getConnection();
 				System.out.println("connection succes!!");
-			}
 			ps = connection.prepareStatement("UPDATE NASABAH SET NIK=?, NAMA_LENGKAP=?, CABANG=? WHERE NO_NASABAH=?");
 			String messageInString = "";
 			if (message instanceof TextMessage) {
@@ -46,7 +45,7 @@ public class UpdateQueueListener1 implements MessageListener {
 				}
 			}
 			rs = ps.executeQuery();
-			DbUtil.dbCleanUp(connection, ps, rs);
+			connection.close();
 			System.out.println("connection terminated!!");
 		} catch (Exception e) {
 			System.err.println("Error " + e.getMessage());
