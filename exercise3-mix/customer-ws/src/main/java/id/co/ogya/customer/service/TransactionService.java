@@ -22,7 +22,7 @@ public class TransactionService {
 			throw new InvalidInputException("Field <account no> harus diisi", " OGYA-999");
 		}else {
 			String simpleDataSourceAccessJNDIName =
-					"SimpleDataSourceAccessImpl#id.co.ogya.nasabah.ejb.SimpleDataSourceAccess";
+					"EbankingServiceImpl#id.co.ogya.ebanking.ejb.EbankingService";
 			try {
 				
 				

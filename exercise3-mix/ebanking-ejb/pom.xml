@@ -26,6 +26,7 @@
 					<generateClient>true</generateClient>
 					<clientIncludes>
 						<clientInclude>com/training/ejb/simple/*</clientInclude>
+						<clientInclude>src/main/java/id/co/ogya/ebanking/ejb/*</clientInclude>
 						<clientInclude>com/training/ejb/simple/test/*</clientInclude>
 					</clientIncludes>
 				</configuration>

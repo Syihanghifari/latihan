@@ -38,8 +38,9 @@
 		</dependency>
 		<dependency>
 			<groupId>id.co.ogya.ebanking</groupId>
-			<artifactId>ebanking-ejb</artifactId>
+			<artifactId>ebanking-ejb-client</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			 <type>ejb-client</type>
 		</dependency>
 	</dependencies>
 	<build>
