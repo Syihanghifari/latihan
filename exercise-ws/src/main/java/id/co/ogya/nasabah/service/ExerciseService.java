@@ -18,6 +18,8 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.naming.NamingException;
 
+import id.co.ogya.nasabah.ejb.SimpleDataSourceAccess;
+//import id.co.ogya.nasabah.ejb.SimpleDataSourceAccess;
 import id.co.ogya.nasabah.request.InsertNasabahRequest;
 import id.co.ogya.nasabah.request.UpdateNasabahRequest;
 import id.co.ogya.nasabah.response.InquiryNasabahResponse;
@@ -65,55 +67,70 @@ public class ExerciseService {
 								insertNasabahRequest.getNik(), insertNasabahRequest.getNamaLengkap(),
 								insertNasabahRequest.getTempatLahir(), insertNasabahRequest.getTanggalLahir(),
 								insertNasabahRequest.getCabang());
-
-						Connection connection = null;
-						Session session = null;
-						MessageProducer sender = null;
-
-						String connectionFactoryName = "jms.TrainingCF";
-						String queueName = "jms.InsertNasabah";
+						
+						String simpleDataSourceAccessJNDIName =
+								"SimpleDataSourceAccessImpl#id.co.ogya.nasabah.ejb.SimpleDataSourceAccess";
+						
 						ServiceFactory serviceFactory = new ServiceFactory();
-						try {
-							ConnectionFactory cf = (ConnectionFactory) serviceFactory.getService(connectionFactoryName);
-							connection = cf.createConnection();
-							session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-
-							Destination destination = (Destination) serviceFactory.getService(queueName);
-							sender = session.createProducer(destination);
-
-							connection.start();
-
-							TextMessage textMessage = session.createTextMessage();
-							String data = newNasabah.toString();
-							textMessage.setText(data);
-
-							sender.send(textMessage);
-
-							System.out.println("Message sent");
-
-							connection.close();
-
-						} catch (NamingException n) {
-							n.printStackTrace();
-						} catch (JMSException e) {
-							e.printStackTrace();
-						} catch (Exception e) {
-							e.printStackTrace();
-						} finally {
-							try {
-								if (sender != null) {
-									sender.close();
-								}
-								if (session != null) {
-									session.close();
-								}
-								if (connection != null) {
-									connection.close();
-								}
-							} catch (JMSException e) {
-								e.printStackTrace();
-							}
+						try{
+							SimpleDataSourceAccess simpleDataSourceAccess = 
+									(SimpleDataSourceAccess) serviceFactory.getService(simpleDataSourceAccessJNDIName);
+							boolean isAbleToConnect = simpleDataSourceAccess.isConnected();
+							System.out.println("is Able to connect " + isAbleToConnect);
+							
+							//simpleDataSourceAccess.insertNasabah(newNasabah);
+						}catch(Exception e){
+							System.err.println(e.getMessage());
 						}
+						
+//						Connection connection = null;
+//						Session session = null;
+//						MessageProducer sender = null;
+//
+//						String connectionFactoryName = "jms.TrainingCF";
+//						String queueName = "jms.InsertNasabah";
+//						ServiceFactory serviceFactory = new ServiceFactory();
+//						try {
+//							ConnectionFactory cf = (ConnectionFactory) serviceFactory.getService(connectionFactoryName);
+//							connection = cf.createConnection();
+//							session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+//
+//							Destination destination = (Destination) serviceFactory.getService(queueName);
+//							sender = session.createProducer(destination);
+//
+//							connection.start();
+//
+//							TextMessage textMessage = session.createTextMessage();
+//							String data = newNasabah.toString();
+//							textMessage.setText(data);
+//
+//							sender.send(textMessage);
+//
+//							System.out.println("Message sent");
+//
+//							connection.close();
+//
+//						} catch (NamingException n) {
+//							n.printStackTrace();
+//						} catch (JMSException e) {
+//							e.printStackTrace();
+//						} catch (Exception e) {
+//							e.printStackTrace();
+//						} finally {
+//							try {
+//								if (sender != null) {
+//									sender.close();
+//								}
+//								if (session != null) {
+//									session.close();
+//								}
+//								if (connection != null) {
+//									connection.close();
+//								}
+//							} catch (JMSException e) {
+//								e.printStackTrace();
+//							}
+//						}
 						Response message = new Response("ERR-000", "Data berhasil disimpan");
 						return message;
 					}

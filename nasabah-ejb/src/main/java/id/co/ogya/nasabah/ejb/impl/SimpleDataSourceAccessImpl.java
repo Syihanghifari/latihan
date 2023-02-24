@@ -19,8 +19,8 @@ import javax.jms.TextMessage;
 import javax.naming.NamingException;
 
 import id.co.ogya.nasabah.ejb.SimpleDataSourceAccess;
-import id.co.ogya.nasabah.ejb.entity.InsertNasabah;
-import id.co.ogya.nasabah.ejb.entity.UpdateNasabah;
+import id.co.ogya.nasabah.ejb.entity.InsertNasabahRequest;
+import id.co.ogya.nasabah.ejb.entity.UpdateNasabahRequest;
 import id.co.ogya.nasabah.ejb.util.DataSourceServiceFactory;
 import id.co.ogya.nasabah.ejb.util.ServiceFactory;
 
@@ -45,8 +45,8 @@ public class SimpleDataSourceAccessImpl implements SimpleDataSourceAccess {
 		return isAbleToConnect;
 	}
 
-	public InsertNasabah getNasabah(Long noNasabah) {
-		InsertNasabah daftarNasabah = new InsertNasabah();
+	public InsertNasabahRequest getNasabah(Long noNasabah) {
+		InsertNasabahRequest daftarNasabah = new InsertNasabahRequest();
 		DataSourceServiceFactory dataSourceServiceFactory = new DataSourceServiceFactory();
 		try {
 			Connection conn = dataSourceServiceFactory.getConnection();
@@ -79,7 +79,7 @@ public class SimpleDataSourceAccessImpl implements SimpleDataSourceAccess {
 
 	}
 
-	public void insertNasabah(InsertNasabah insertNasabah) {
+	public void insertNasabah(InsertNasabahRequest insertNasabah) {
 		DataSourceServiceFactory dataSourceServiceFactory = new DataSourceServiceFactory();
 		try {
 			Connection conn = dataSourceServiceFactory.getConnection();
@@ -102,7 +102,7 @@ public class SimpleDataSourceAccessImpl implements SimpleDataSourceAccess {
 		System.out.println("data berhasil ditambahkan");
 	}
 
-	public void updateNasabah(UpdateNasabah updateNasabah) {
+	public void updateNasabah(UpdateNasabahRequest updateNasabah) {
 		DataSourceServiceFactory dataSourceServiceFactory = new DataSourceServiceFactory();
 		try {
 			Connection conn = dataSourceServiceFactory.getConnection();
@@ -125,7 +125,7 @@ public class SimpleDataSourceAccessImpl implements SimpleDataSourceAccess {
 
 	}
 
-	private void sendMessage(UpdateNasabah updateNasabah) throws SQLException {
+	private void sendMessage(UpdateNasabahRequest updateNasabah) throws SQLException {
 		javax.jms.Connection connection = null;
 		Session session = null;
 		MessageProducer sender = null;

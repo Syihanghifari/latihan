@@ -1,8 +1,8 @@
 package id.co.ogya.nasabah.ejb.app;
 
 import id.co.ogya.nasabah.ejb.SimpleDataSourceAccess;
-import id.co.ogya.nasabah.ejb.entity.InsertNasabah;
-import id.co.ogya.nasabah.ejb.entity.UpdateNasabah;
+import id.co.ogya.nasabah.ejb.entity.InsertNasabahRequest;
+import id.co.ogya.nasabah.ejb.entity.UpdateNasabahRequest;
 import id.co.ogya.nasabah.ejb.util.ServiceFactory;
 
 public class TestSimpleDataSourceAccess {
@@ -35,7 +35,7 @@ public class TestSimpleDataSourceAccess {
 //			System.out.println(getNasabah.getTanggalLahir());
 //			System.out.println(getNasabah.getCabang());
 			
-			UpdateNasabah updateNasabah = new UpdateNasabah();
+			UpdateNasabahRequest updateNasabah = new UpdateNasabahRequest();
 			updateNasabah.setNoNasabah(20L);
 			updateNasabah.setNamaLengkap("sfsdf");
 			updateNasabah.setNik(1900L);
